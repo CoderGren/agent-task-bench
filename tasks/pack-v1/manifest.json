@@ -1,0 +1,24 @@
+{
+  "name": "pack-v1",
+  "description": "Synthetic software-engineering agent tasks for public benchmarking. These are stand-ins, not a private product repository.",
+  "tasks": [
+    {
+      "id": "T1_docs",
+      "title": "Document local-only test suites",
+      "verify": ["python3 verify.py"],
+      "max_steps": 12
+    },
+    {
+      "id": "T2_error_message",
+      "title": "Make a command-specific error message accurate",
+      "verify": ["python3 verify.py"],
+      "max_steps": 16
+    },
+    {
+      "id": "T3_http_tests",
+      "title": "Cover health and rejection paths in tests only",
+      "verify": ["python3 verify.py"],
+      "max_steps": 20
+    }
+  ]
+}

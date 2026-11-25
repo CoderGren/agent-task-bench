@@ -1,0 +1,21 @@
+name: checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: python3 -m pip install -e ".[dev]"
+      - name: Tests
+        run: python3 -m pytest -q
+      - name: Pack fixtures load
+        run: python3 -c "from pathlib import Path; from agent_task_bench.tasks import load_pack; t=load_pack(Path('tasks/pack-v1')); assert [x.id for x in t]==['T1_docs','T2_error_message','T3_http_tests']"
